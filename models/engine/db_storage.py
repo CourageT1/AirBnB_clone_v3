@@ -27,7 +27,6 @@ class DBStorage:
     __engine = None
     __session = None
 
-           
     def __init__(self):
         """
         Initializes the DBStorage object
@@ -45,7 +44,6 @@ class DBStorage:
         if HBNB_ENV == "test":
             Base.metadata.drop_all(self.__engine)
 
-           
     def all(self, cls=None):
         """
         Returns a dictionary of objects of a specific class or all classes
@@ -59,29 +57,25 @@ class DBStorage:
                     new_dict[key] = obj
         return new_dict
 
-           
     def new(self, obj):
         """
         Adds the object to the current database session
         """
         self.__session.add(obj)
 
-           
     def save(self):
         """
         Commits all changes of the current database session
         """
         self.__session.commit()
 
-           
     def delete(self, obj=None):
         """
         Deletes an object from the current database session
-        """
+       """
         if obj is not None:
             self.__session.delete(obj)
 
-           
     def reload(self):
         """
         Reloads data from the database
@@ -91,14 +85,12 @@ class DBStorage:
         Session = scoped_session(sess_factory)
         self.__session = Session
 
-           
     def close(self):
         """
         Closes the current session
         """
         self.__session.remove()
 
-           
     def get(self, cls, id):
         """
         Retrieves one object based on class and ID
@@ -109,7 +101,6 @@ class DBStorage:
                 return obj
         return None
 
-           
     def count(self, cls=None):
         """
         Counts the number of objects in storage matching the given class
