@@ -12,6 +12,7 @@ from models.state import State
 from models.amenity import Amenity
 import json
 
+
 @app_views.route(
         '/cities/<city_id>/places', methods=['GET'], strict_slashes=False)
 def get_places(city_id):
@@ -83,6 +84,7 @@ def update_place(place_id):
     place.save()
     return jsonify(place.to_dict()), 200
 
+
 @app_views.route('/places_search', methods=['POST'], strict_slashes=False)
 def places_search():
     """Searches for Place objects based on JSON request body"""
@@ -120,7 +122,8 @@ def places_search():
     if amenities:
         amenities_places = set()
         for place in places:
-            if all(amenity_id in place.amenities_id for amenity_id in amenities):
+            if all(amenity_id in place.amenities_id
+                    for amenity_id in amenities):
                 amenities_places.add(place)
         places = list(amenities_places)
 
