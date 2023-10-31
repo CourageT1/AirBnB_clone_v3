@@ -11,7 +11,7 @@ from models.user import User
 
 
 @app_views.route(
-'/places/<place_id>/reviews', methods=['GET'], strict_slashes=False)
+        '/places/<place_id>/reviews', methods=['GET'], strict_slashes=False)
 def get_reviews(place_id):
     """Retrieves the list of all Review objects of a Place."""
     place = storage.get(Place, place_id)
@@ -31,7 +31,7 @@ def get_review(review_id):
 
 
 @app_views.route(
-'/reviews/<review_id>', methods=['DELETE'], strict_slashes=False)
+        '/reviews/<review_id>', methods=['DELETE'], strict_slashes=False)
 def delete_review(review_id):
     """Deletes a Review object."""
     review = storage.get(Review, review_id)
@@ -43,7 +43,7 @@ def delete_review(review_id):
 
 
 @app_views.route(
-'/places/<place_id>/reviews', methods=['POST'], strict_slashes=False)
+        '/places/<place_id>/reviews', methods=['POST'], strict_slashes=False)
 def create_review(place_id):
     """Creates a Review."""
     place = storage.get(Place, place_id)
