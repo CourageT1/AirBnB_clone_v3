@@ -23,7 +23,15 @@ def stats():
     Returns:
         JSON response with the counts of each object type.
     """
-    classes = {
+    from models import storage
+    from models.amenity import Amenity
+    from models.city import City
+    from models.place import Place
+    from models.review import Review
+    from models.state import State
+    from models.user import User
+
+    count = {
         'Amenity': storage.count('Amenity'),
         'City': storage.count('City'),
         'Place': storage.count('Place'),
@@ -31,4 +39,4 @@ def stats():
         'State': storage.count('State'),
         'User': storage.count('User')
     }
-    return jsonify(classes)
+    return jsonify(count)
